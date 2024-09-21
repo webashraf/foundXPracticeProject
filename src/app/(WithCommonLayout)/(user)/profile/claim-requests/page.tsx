@@ -1,6 +1,5 @@
 const page = () => {
-    return <div></div>;
-  };
-  
-  export default page;
-  
+  return <div>Claim-Requests</div>;
+};
+
+export default page;

@@ -13,7 +13,7 @@ interface IProps {
 const FXInput = ({
   type = "text",
   variant = "bordered",
-  size = "md",
+  size = "sm",
   required = false,
   label = "",
   name,
@@ -26,12 +26,13 @@ const FXInput = ({
     <Input
       {...register(name)}
       isInvalid={!!errors[name]}
-      errorMessage={errors[name] ? (errors[name].message as string) : ""}
+      errorMessage={errors[name] ? (errors[name]?.message as string) : ""}
       type={type}
       label={label}
       variant={variant}
       size={size}
       required={required}
+      className="rounded-lg"
     />
   );
 };

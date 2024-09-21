@@ -18,7 +18,7 @@ const RecentPost = async () => {
       </div>
       <div className="my-8 grid justify-center gap-20 sm:grid-cols-1 md:grid-cols-3">
         {items?.data.map((item: IItem) => (
-          <ItemsCard key={item._id} item={item} />
+          <ItemsCard key={item?._id} item={item} />
         ))}
       </div>
       <div className="flex justify-center">

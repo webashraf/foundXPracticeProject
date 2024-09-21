@@ -6,16 +6,34 @@ import Loading from "@/src/components/UI/Loading";
 import { useUser } from "@/src/context/user.provider";
 import { useUserLogin } from "@/src/hooks/auth.hooks";
 import { Button } from "@nextui-org/button";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useEffect } from "react";
 import { FieldValues, SubmitHandler } from "react-hook-form";
 
 const loginPage = () => {
-  const { mutate: handleUserLogin, isPending } = useUserLogin();
-  const { setIsLoading: setUserLoading } = useUser();
+  const searchParams = useSearchParams();
+
+  const router = useRouter();
+  const { setIsLoading: userLoading } = useUser();
+
+  const redirect = searchParams.get("redirect");
+
+  const { mutate: handleUserLogin, isPending, isSuccess } = useUserLogin();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     handleUserLogin(data);
-    setUserLoading(true);
+    userLoading(true);
   };
+
+  useEffect(() => {
+    if (!isPending && isSuccess) {
+      if (redirect) {
+        router.push(redirect);
+      } else {
+        router.push("/");
+      }
+    }
+  }, [isPending, isSuccess]);
 
   return (
     <div className="flex justify-center items-center h-[80vh]">

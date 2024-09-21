@@ -1,5 +1,6 @@
 "use client";
 import { useUser } from "@/src/context/user.provider";
+import { config } from "@/src/middleware";
 import { logoutUser } from "@/src/services/AuthService";
 import { Avatar } from "@nextui-org/avatar";
 import {
@@ -8,9 +9,10 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/dropdown";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const NavDropDown = () => {
+  const pathname = usePathname();
   const router = useRouter();
   const { setIsLoading: setUserLoading } = useUser();
 
@@ -21,6 +23,10 @@ const NavDropDown = () => {
   const handleLogout = () => {
     logoutUser();
     setUserLoading(true);
+
+    if (config.matcher.includes(pathname)) {
+      router.push("/");
+    }
   };
 
   return (

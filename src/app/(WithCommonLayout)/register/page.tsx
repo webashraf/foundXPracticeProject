@@ -12,7 +12,6 @@ const page = () => {
   const { mutate: handleUserRegistration } = useUserRegistration();
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    console.log(data);
 
     const userData = {
       ...data,

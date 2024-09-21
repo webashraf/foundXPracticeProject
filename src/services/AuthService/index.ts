@@ -27,6 +27,7 @@ export const loginUser = async (userData: FieldValues) => {
     if (data.success) {
       cookies().set("accessToken", data?.data?.accessToken);
       cookies().set("refreshToken", data?.data?.refreshToken);
+      
     }
 
     return data;
@@ -36,7 +37,6 @@ export const loginUser = async (userData: FieldValues) => {
 };
 
 export const logoutUser = () => {
-  console.log("logout");
   cookies().delete("accessToken");
   cookies().delete("refreshToken");
 };

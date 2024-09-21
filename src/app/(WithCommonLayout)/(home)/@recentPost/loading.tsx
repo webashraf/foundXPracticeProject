@@ -14,7 +14,7 @@ const loading = () => {
       </div>
       <div className="my-8 grid justify-center gap-20 sm:grid-cols-1 md:grid-cols-3">
         {[...Array(9)].map((item) => (
-          <p>
+          <p key={item?._id}>
             <CardSkeleton />
           </p>
         ))}

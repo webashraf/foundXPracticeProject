@@ -18,12 +18,12 @@ import { Logo } from "@/src/components/icons";
 import { ThemeSwitch } from "@/src/components/UI/theme-switch";
 import { siteConfig } from "@/src/config/site";
 import { useUser } from "@/src/context/user.provider";
+import { Button } from "@nextui-org/button";
 import NavDropDown from "./NavDropDown";
 
 export const Navbar = () => {
   const { user, isLoading } = useUser();
 
-  console.log({ user, isLoading });
   return (
     <NextUINavbar maxWidth="xl" position="sticky">
       <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
@@ -63,7 +63,9 @@ export const Navbar = () => {
             <NavDropDown />
           </NavbarItem>
         ) : (
-          <Link href="/login">Login</Link>
+          <Link href="/login">
+            <Button className="text-default bg-white font-bold">Login</Button>
+          </Link>
         )}
       </NavbarContent>
 
