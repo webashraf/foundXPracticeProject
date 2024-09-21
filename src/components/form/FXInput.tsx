@@ -2,14 +2,8 @@
 
 import { Input } from "@nextui-org/input";
 import { useFormContext } from "react-hook-form";
-interface IProps {
-  type?: string;
-  variant?: "flat" | "bordered" | "faded" | "underlined";
-  size?: "sm" | "md" | "lg";
-  required?: boolean;
-  label: string;
-  name: string;
-}
+import { IInput } from "./form.types";
+
 const FXInput = ({
   type = "text",
   variant = "bordered",
@@ -17,7 +11,7 @@ const FXInput = ({
   required = false,
   label = "",
   name,
-}: IProps) => {
+}: IInput) => {
   const {
     register,
     formState: { errors },
