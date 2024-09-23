@@ -9,17 +9,24 @@ interface IProps extends IInput {
   }[];
 }
 
-const FXSelect = ({ name, label, options, variant = "bordered" }: IProps) => {
+const FXSelect = ({
+  name,
+  label,
+  options,
+  variant = "bordered",
+  disabled,
+}: IProps) => {
   const {
     register,
     formState: { errors },
   } = useFormContext();
   return (
-    <div>
+    <>
       <Select
-        label={label}
-        className=" w-[300px]"
         {...register(name)}
+        isDisabled={disabled}
+        label={label}
+        className=" w-full"
         size="sm"
         variant={variant}
       >
@@ -27,7 +34,7 @@ const FXSelect = ({ name, label, options, variant = "bordered" }: IProps) => {
           <SelectItem key={option.key}>{option.label}</SelectItem>
         ))}
       </Select>
-    </div>
+    </>
   );
 };
 

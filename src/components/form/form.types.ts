@@ -5,4 +5,5 @@ export interface IInput {
   required?: boolean;
   label: string;
   name: string;
+  disabled?: boolean;
 }

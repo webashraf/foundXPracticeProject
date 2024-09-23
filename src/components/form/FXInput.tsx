@@ -26,7 +26,7 @@ const FXInput = ({
       variant={variant}
       size={size}
       required={required}
-      className="rounded-lg"
+      className="rounded-lg w-full"
     />
   );
 };
